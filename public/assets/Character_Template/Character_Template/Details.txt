@@ -1,0 +1,9 @@
+​Character Template to create characters for your game.
+
+The original files are 16x32 each frame.
+
+The other files are sizes scaled by 2x and 3x.
+
+
+Credits not necessary but is always appreciate.
+Free to use commercially.

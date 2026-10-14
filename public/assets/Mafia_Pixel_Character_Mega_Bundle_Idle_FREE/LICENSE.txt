@@ -1,0 +1,24 @@
+JOY CAT DEV ASSET LICENSE v1.0
+
+Asset pack: Mafia Pixel Character Mega Bundle
+Credit line: Assets: eufil — JoyCat
+
+PERMITTED
+- Use these assets in personal and commercial projects.
+- Modify the assets for use inside your own projects.
+- Include the assets as part of a finished game, application, video, trailer, screenshot, stream, or other promotional material for your finished project.
+- Use the assets on multiple projects owned or commissioned by the license holder.
+
+NOT PERMITTED
+- Resell, redistribute, share, sublicense, or upload the original or modified assets as standalone files, as a competing asset pack, template, resource collection, stock library, or download.
+- Make the assets available in a form where users can easily extract and reuse them as a substitute for purchasing the original pack.
+- Mint, sell, or distribute the standalone assets as NFTs or similar tokenized collectibles.
+- Claim that you created the original source artwork.
+
+CREDIT
+Credit is appreciated but not required.
+Suggested credit: Assets: eufil — JoyCat
+
+NOTES
+- This license applies to the art files in this pack, not to third-party software or engine licenses.
+- Mockup environments and presentation UI contained only in the SELLER KIT are promotional material and are not part of the customer asset download unless explicitly stated.

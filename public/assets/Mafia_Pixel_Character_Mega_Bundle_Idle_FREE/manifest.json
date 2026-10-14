@@ -1,0 +1,56 @@
+{
+  "pack_name": "Mafia Pixel Character Mega Bundle — Idle FREE Sample",
+  "frame_size": [
+    32,
+    32
+  ],
+  "source_exact": true,
+  "dedicated_idle_animation_present_in_source": false,
+  "explanation": "The free sample uses the exact neutral stance frame (column 1) from each direction for every variant.",
+  "variants": {
+    "Blue": {
+      "idle_directional_poses": 4,
+      "directions": [
+        "Front_Down",
+        "Left",
+        "Right",
+        "Back_Up"
+      ],
+      "source_column": 1,
+      "animated_motion": false
+    },
+    "Bold": {
+      "idle_directional_poses": 4,
+      "directions": [
+        "Front_Down",
+        "Left",
+        "Right",
+        "Back_Up"
+      ],
+      "source_column": 1,
+      "animated_motion": false
+    },
+    "Creepy": {
+      "idle_directional_poses": 4,
+      "directions": [
+        "Front_Down",
+        "Left",
+        "Right",
+        "Back_Up"
+      ],
+      "source_column": 1,
+      "animated_motion": false
+    },
+    "Red": {
+      "idle_directional_poses": 4,
+      "directions": [
+        "Front_Down",
+        "Left",
+        "Right",
+        "Back_Up"
+      ],
+      "source_column": 1,
+      "animated_motion": false
+    }
+  }
+}
