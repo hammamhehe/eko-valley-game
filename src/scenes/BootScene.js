@@ -129,6 +129,14 @@ export default class BootScene extends Phaser.Scene {
       }
     }
 
-    this.scene.start("MainMenuScene");
+    // Tunggu font "Press Start 2P" selesai dimuat agar teks menu langsung tampil benar.
+    // Jika gagal (misalnya offline) permainan tetap lanjut dengan font cadangan.
+    const goToMenu = () => this.scene.start("MainMenuScene");
+
+    if (typeof document !== "undefined" && document.fonts && document.fonts.load) {
+      Promise.race([document.fonts.load('16px "Press Start 2P"'), new Promise((resolve) => setTimeout(resolve, 2500))]).then(goToMenu, goToMenu);
+    } else {
+      goToMenu();
+    }
   }
 }
