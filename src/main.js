@@ -4,6 +4,8 @@ import BootScene from "./scenes/BootScene.js";
 import MainMenuScene from "./scenes/MainMenuScene.js";
 import IntroScene from "./scenes/IntroScene.js";
 import Level1VScene from "./scenes/Level1VScene.js";
+import ResultScene from "./scenes/ResultScene.js";
+import Level2AScene from "./scenes/Level2AScene.js";
 
 const config = {
   type: Phaser.AUTO,
@@ -30,7 +32,8 @@ const config = {
     roundPixels: true,
   },
 
-  scene: [BootScene, MainMenuScene, IntroScene, Level1VScene],
+  // Urutan penting: ResultScene tampil di atas Level1VScene
+  scene: [BootScene, MainMenuScene, IntroScene, Level1VScene, ResultScene, Level2AScene],
 };
 
 new Phaser.Game(config);

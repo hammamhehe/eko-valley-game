@@ -14,6 +14,7 @@ export default class Level1VScene extends Phaser.Scene {
     this.trashes = [];
     this.targetColor = null;
     this.pickupLocked = false;
+    this.mistakes = 0; // berapa kali salah memilih warna sampah
 
     this.physics.world.setBounds(0, 0, this.worldWidth, this.worldHeight);
 
@@ -301,6 +302,7 @@ export default class Level1VScene extends Phaser.Scene {
 
     // Hanya sampah sesuai perintah yang bisa dikumpulkan.
     if (color !== this.targetColor.name) {
+      this.mistakes++;
       this.showMessage(`Bukan sampah ${this.targetColor.name}! Cari warna yang benar.`);
       return;
     }
@@ -375,58 +377,28 @@ export default class Level1VScene extends Phaser.Scene {
     if (this.timerEvent) this.timerEvent.remove(false);
 
     this.physics.pause();
+    if (this.player && this.player.anims) this.player.anims.stop();
 
-    const w = this.scale.width;
-    const h = this.scale.height;
-
-    this.add
-      .rectangle(w / 2, h / 2, w, h, 0x07140b, 0.86)
-      .setScrollFactor(0)
-      .setDepth(40000);
-
-    this.add
-      .text(w / 2, h / 2 - 60, "SESI VISUAL SELESAI", {
-        fontFamily: "Georgia, serif",
-        fontSize: "30px",
-        fontStyle: "bold",
-        color: "#e1efc5",
-      })
-      .setOrigin(0.5)
-      .setScrollFactor(0)
-      .setDepth(40001);
-
-    this.add
-      .text(w / 2, h / 2 - 12, `Sampah sesuai perintah terkumpul: ${this.score}`, {
-        fontFamily: "Arial",
-        fontSize: "17px",
-        color: "#ffffff",
-      })
-      .setOrigin(0.5)
-      .setScrollFactor(0)
-      .setDepth(40001);
+    const total = this.trashes.length;
+    const cleared = this.trashes.every((trash) => !trash.active);
+    const timeLeft = Math.max(0, this.timeLeft);
 
     this.registry.set("visualScore", this.score);
 
-    this.makeResultButton(w / 2, h / 2 + 45, "LANJUT KE SESI AUDITORY", () => this.scene.start("Level2AScene"));
+    const vark = this.registry.get("varkScores");
+    if (vark) this.registry.set("varkScores", Object.assign({}, vark, { V: this.score }));
 
-    this.makeResultButton(w / 2, h / 2 + 100, "KEMBALI KE MENU", () => this.scene.start("MainMenuScene"));
-  }
-
-  makeResultButton(x, y, label, callback) {
-    const bg = this.add.rectangle(x, y, 290, 42, 0xc5d49c).setScrollFactor(0).setDepth(40001).setInteractive({ useHandCursor: true });
-
-    this.add
-      .text(x, y, label, {
-        fontFamily: "Arial",
-        fontSize: "13px",
-        fontStyle: "bold",
-        color: "#203524",
-      })
-      .setOrigin(0.5)
-      .setScrollFactor(0)
-      .setDepth(40002);
-
-    bg.on("pointerdown", callback);
+    // Layar penilaian ditampilkan oleh ResultScene (di atas scene ini)
+    this.time.delayedCall(450, () => {
+      this.scene.launch("ResultScene", {
+        score: this.score,
+        total,
+        mistakes: this.mistakes,
+        timeLeft,
+        timeTotal: 60,
+        cleared,
+      });
+    });
   }
 
   update() {
